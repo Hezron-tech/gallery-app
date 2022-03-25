@@ -1,4 +1,5 @@
 from email.mime import image
+from pickle import TRUE
 from unicodedata import category
 from django.db import models
 
@@ -16,6 +17,7 @@ class Photo(models.Model):
     category =models.ForeignKey(Category,on_delete=models.SET_NULL,null=True) 
     image=models.ImageField(null=False, blank=False)
     description=models.TextField()
+    # pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.description        
