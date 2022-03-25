@@ -8,7 +8,7 @@ def gallery(request):
     return render(request, 'photos/gallery.html')
 
 
-def viewPhoto(request,pk):
+def viewPhoto(request):
      return render(request, 'photos/photo.html')
 
 

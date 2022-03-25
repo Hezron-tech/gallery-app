@@ -1,9 +1,8 @@
 from django.urls import path
 from . import views
 
-urlpatterns=[
-
+urlpatterns = [
     path('',views.gallery, name='gallery'),
-    path('photo/<str:pk>/ ',views.viewPhoto, name='photo'),
+    path('photo/',views.viewPhoto, name='photo'),
     path('new/',views.newPhoto, name='new'),
 ]
