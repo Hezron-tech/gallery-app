@@ -1,3 +1,4 @@
+from email.mime import image
 from unicodedata import category
 from django.db import models
 
@@ -12,9 +13,10 @@ class Category(models.Model):
 
 
 class Photo(models.Model):
-    category =models.ForeignKey(category,on_delete=models.SET_NULL) 
-    description=models.CharField(max_length=100,null=False,blank=False)
+    category =models.ForeignKey(Category,on_delete=models.SET_NULL,null=True) 
+    image=models.ImageField(null=False, blank=False)
+    description=models.TextField()
 
     def __str__(self):
-        return self.name        
+        return self.description        
 
