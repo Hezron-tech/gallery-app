@@ -1,4 +1,5 @@
 
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from.models import Category,Photo
@@ -20,4 +21,7 @@ def viewPhoto(request,pk):
 
 
 def newPhoto(request):
-     return render(request, 'photos/new.html')
+
+     categories=Category.objects.all()
+     context ={'categories':categories}
+     return render(request, 'photos/new.html',context)
