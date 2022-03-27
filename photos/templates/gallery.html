@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+<style>
+    .image-thumbnail{
+        height: 200px;;
+    }
+</style>
+  <div class="container">
+      <div class="row m-5">
+          <div class="col-md-3">
+            <div class="card" >
+                <div class="card-header">
+                    <h5>Categories</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">All</li>
+                  {% for category in categories %}
+                  <li class="list-group-item">{{ category.category_name }}</li>
+                  {% endfor %}
+                      <a href="{% url 'add' %}" class="btn btn-outline-dark btn-sn btn-block  m-1">ADD PHOTO</a>
+                </ul>
+              </div>
+          </div>
+          <div class="col-md-9">
+              <div class="row">
+                  {% for image in images %}
+                   <div class="col-md-4">
+                      <div class="card" >
+                          <img class="image-thumbnail "
+                           src="{{image.image.url}}" class="card-img-top" alt="bird">
+                          <div class="card-body">
+                              <p >Category:{{image.category.category_name}}</p>
+                              <p>Location:{{image.location.location_name}}</p>
+                          </div>
+                        <a href="{%url 'photo' image.id %}" class="btn btn-outline-dark btn-sn m-1">View</a>
+                      </div>
+                   </div>
+                   {% empty %}
+                   <h1>OOOPS!No photos for you now....</h1>
+                  {% endfor %%}
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

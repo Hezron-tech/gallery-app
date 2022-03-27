@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'photos',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +78,9 @@ WSGI_APPLICATION = 'gallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'album',
+        'NAME': 'hike',
         'USER': 'hezron',
-        'PASSWORD':'hezzy',
+        'PASSWORD':'1234',
     }
 }
 
