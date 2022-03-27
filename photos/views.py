@@ -1,6 +1,8 @@
 
-from multiprocessing import context
-from django.shortcuts import render
+from email.mime import image
+
+
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from.models import Category,Photo
 
@@ -23,5 +25,28 @@ def viewPhoto(request,pk):
 def newPhoto(request):
 
      categories=Category.objects.all()
+
+     if request.method == 'POST':
+          data = request.POST
+          images = request.FILES.getlist('images')
+
+          if data['category'] != 'none':
+               category = Category.objects.get(id=data['category'])
+          elif data['category_new'] != '':
+               category, created = Category.objects.get_or_create(
+                   
+                    name=data['category_new'])
+          else:
+               category = None
+
+               photo = Photo.objects.create(
+                    category =category,
+                    description =data['description'],
+                    image=image,
+               )  
+               return redirect('gallery')         
+
+
+
      context ={'categories':categories}
      return render(request, 'photos/new.html',context)

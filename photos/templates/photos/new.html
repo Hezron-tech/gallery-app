@@ -14,10 +14,11 @@
                 <a class="btn btn-outline-dark " href="{% url 'gallery' %}">Go to main page</a>
                 <div class="card">
 
-                    <form>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <div class="form-group m-3">
                             <label>Description</label>
-                            <input type="text" name="description" placeholder="Enter a description" class="form-control">
+                            <input required type="text" name="description" placeholder="Enter a description" class="form-control">
 
                         </div>
                         <div class="form-group m-3">
@@ -26,18 +27,27 @@
                                 <option value="none">Select category ...</option>
 
                                  {% for category in categories %}
-                                    <option value="category.id">{{category.name}}</option>
+                                    <option value="category">{{category.name}}</option>
                                  {% endfor %}    
 
 
                             </select>
+                        </div>
+
+                            <div class="form-group m-3">
+                                <label>Create new category</label>
+                                <input type="text" name="category_new" placeholder="create a new category" class="form-control">
+    
+                            </div>
                             <div class="form-group m-3">
                                 <label>Upload image</label>
-                                <input type="file" name="image" class="form-control-file">
+                                <input required type="file" name="image" class="form-control-file">
     
                             </div>
 
-                        </div>
+                            <button type="submit" class="btn btn-primary">ADD</button>
+
+                        
 
                         
                          

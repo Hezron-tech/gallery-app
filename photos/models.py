@@ -11,11 +11,15 @@ class Category(models.Model):
         return self.name
 
 
+class Location(models.Model):
+    location_name = models.CharField(max_length=50)        
+
+
 class Photo(models.Model):
     category =models.ForeignKey(Category,on_delete=models.SET_NULL,null=True) 
     image=models.ImageField(null=False, blank=False)
     description=models.TextField()
-    # pub_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.description        
