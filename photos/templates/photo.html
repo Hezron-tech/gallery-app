@@ -1,8 +1,8 @@
 {% load bootstrap4 %}
 
     <div class="container m-5">
-        <div class="row justify-content-center">
-            <div class="col">
+        <div class="row">
+            <div class="col justify-content-center">
                  <a class="btn btn-outline-dark " href="{% url 'gallery' %}">Go to main page</a>
 
             <div style ="height: 90vh;">
@@ -14,7 +14,7 @@
              <p>This photo was taken at:{{image.location}}</p>
 
              <input style="text-align:center;" type="text" value="{{image.image.url}}" id="url">
-             <button style="background:orangered; color:white; text-align:center;" onclick="CopyUrl()">Copy Image URL</button>
+             <button style="background:black; color:white; text-align:center;" onclick="CopyUrl()">Copy Image URL</button>
 
         
             </div>
