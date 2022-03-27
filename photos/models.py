@@ -1,6 +1,6 @@
 from django.db import models
 # Create your models here.
-class  Category(models.Model):
+class Category(models.Model):
     category_name = models.CharField(max_length=100,null=False,blank=False)
     def __str__(self):
         return self.category_name
@@ -23,7 +23,7 @@ class Location(models.Model):
 class  Image(models.Model):
     image_name=models.CharField(max_length=50)
     description=models.TextField()
-    category=models.ForeignKey(Category,on_delete=models.CASCADE, default='0')
+    category=models.ForeignKey(Category,on_delete=models.CASCADE, default='')
     location=models.ForeignKey(Location,on_delete=models.CASCADE, default='0')
     image=models.ImageField(upload_to='images/', default='0')
     def __str__(self):
