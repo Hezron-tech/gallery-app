@@ -4,7 +4,7 @@ from email.mime import image
 
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from.models import Category,Photo
+from.models import Category,Photo,Location
 
 # Create your views here.
 
@@ -14,6 +14,14 @@ def gallery(request):
      photos = Photo.objects.all()
      context ={'categories':categories , 'photos':photos} 
      return render(request, 'photos/gallery.html', context)
+
+
+
+def photo_location(request,location_name):
+    location=Location.get_locations()
+    photo= Photo.fetch_by_location(location_name)
+    message = f"{location_name}"
+    return render(request, 'photoLocation.html',{"message":message,"photo": photo,"location":location})     
 
 
 def viewPhoto(request,pk):
