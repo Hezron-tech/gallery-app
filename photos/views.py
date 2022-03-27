@@ -19,10 +19,10 @@ def image_properties(request,image_id):
 def search_category(request):
     location=Location.get_locations()
     if 'category' in request.GET and request.GET["category"]:
-        category = request.GET.get("category")
+        category = request.GET.get("image")
         search = Image.search_category(category)
         message = f"{category}"
-        return render(request, 'search.html',{"message":message,"category": search,"location":location})
+        return render(request, 'search.html',{"message":message,"image": search,"location":location})
     else:
         return render(request, 'search.html')
 def viewPhoto(request,pk):

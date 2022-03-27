@@ -37,7 +37,7 @@ class  Image(models.Model):
         cls.objects.filter(id=id).update(image=image)
     @classmethod
     def search_category(cls,category):
-        image =cls.objects.filter(category__category_name__icontains=category)
+        image =cls.objects.filter(category__category__icontains=category)
         return image
     @classmethod
     def fetch_by_location(cls,location_name):
